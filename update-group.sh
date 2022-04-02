@@ -2,6 +2,8 @@
 
 # sh update-group.sh <group-name> <enable | disable >
 
+pihole_binary=/usr/local/bin/pihole
+
 case "${2}" in
   "enable")
     sqlite3 /etc/pihole/gravity.db "update 'group' set 'enabled'=1 where name='${1}'";
@@ -11,4 +13,5 @@ case "${2}" in
     ;;
 esac
 
-/usr/local/bin/pihole restartdns reload-lists >/dev/null
+$pihole_binary restartdns reload-lists >/dev/null
+
