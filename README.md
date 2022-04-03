@@ -1,5 +1,7 @@
 # Pihole Time Blocker
 
+A simple script to enable/disable pihole groups (pihole associations with specific clients, whitelists, blacklists, etc.). Using cronjobs, groups can be active during specific times in a day.
+
 ## Installation
 
 1. Clone the repo
@@ -29,11 +31,13 @@ Using cronjobs, the script can be configured to enable or disable the specified 
 2. Configure your cronjobs for enabling/disabling pihole group
 
 ##### Example Cronjob
+
+These example cronjobs will turn on a group from 12am - 5pm every weekday
 ```
 # 12am everyday from Monday - Friday. Enable the group list as the pihole user
-0 0 * * 1-5 pihole /path/to/script/update-groups.sh <GroupName> <enable|disable>
+0 0 * * 1-5 pihole /path/to/script/update-groups.sh <GroupName> enable
 
 # 5pm everyday from Monday - Friday. Disable the group as the pihole user
-0 0 * * 1-5 pihole /path/to/script/update-groups.sh <GroupName> <enable|disable>
+0 0 * * 1-5 pihole /path/to/script/update-groups.sh <GroupName> disable
 ```
 
